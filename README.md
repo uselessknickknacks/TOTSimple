@@ -11,3 +11,19 @@ something other than what is expected the timer responsible for updating the clo
 and you will need to restart the program.
 
 That is on TODO btw. Will DO it when I feel like it. :)
+
+
+Timezones:
+
+Since the timer currently gets fried if you enter things incorrectly, here's a short guide on how to get timezones.
+The software is on Europe/Stockholm by default. The program will not remember anything (aka no config file, that's for later when I feel like it). 
+
+Go to this webpage: https://www.mkyong.com/java/java-display-list-of-timezone-with-gmt/
+Copy&paste the Continent/Region. For example 
+"America/Vancouver" (without "") into the white little textfield next to the "Change TimeZone" button. 
+Ensure that no spaces are present at all.
+And then press it. If for some reason your city/town whatever is not on that webpage. Pick the next best thing that matches your time.
+Give it a sec or two and presto timezone changed.
+Ensure that no spaces are present at all.
+
+You will need to redo this each time the software is closed as the software is hardcoded to "Europe/Stockholm".
