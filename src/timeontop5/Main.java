@@ -6,6 +6,7 @@
 package timeontop5;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.lang.reflect.Field;
 import java.util.logging.Level;
@@ -23,7 +24,10 @@ import javax.swing.Timer;
  */
 public class Main extends javax.swing.JFrame {
 
+ 
+
    public static String timezoneuserinput;
+   public static String ErrorLabel;
    public static boolean PM_AND_AM_MODE_ENABLED = false;
    public static boolean SECONDS_ENABLED = true;
 
@@ -59,11 +63,23 @@ int timesGREENpressed = 0;
        @Override
        public void actionPerformed(java.awt.event.ActionEvent e) {
            
+           String[] THEFUCKINGTIMEISNEAR = gitthetime.grabtime();
+           FUCKINGSETTHECLOCKTEXTREEEEEEEEEEEEEEEEEE(THEFUCKINGTIMEISNEAR[0]);
+           if (THEFUCKINGTIMEISNEAR.length > 1) {
+               ERRORMEUPSCOTT(THEFUCKINGTIMEISNEAR[1]);
+           }
            
-           FUCKINGSETTHECLOCKTEXTREEEEEEEEEEEEEEEEEE(gitthetime.grabtime());
            
        }
         };
+        
+        public void ERRORMEUPSCOTT (String shit) {
+            lblcurrenttimezone.setText(shit);
+            lblcurrenttimezone.setForeground(Color.red);
+            Font Nigga = lblcurrenttimezone.getFont();
+            Nigga.deriveFont(Font.BOLD);
+        }
+        
         
         ActionListener rainbowcolormode = new ActionListener() {
             public void actionPerformed(ActionEvent evt) {
@@ -355,11 +371,11 @@ int timesGREENpressed = 0;
         lblClockText.setFont(new java.awt.Font("Valken", 1, 36)); // NOI18N
         lblClockText.setForeground(new java.awt.Color(102, 255, 102));
         lblClockText.setText("00:00:00");
-        getContentPane().add(lblClockText, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 0, 270, 60));
+        getContentPane().add(lblClockText, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 350, 60));
 
         lblClockShadow.setFont(new java.awt.Font("Valken", 0, 39)); // NOI18N
         lblClockShadow.setText("00:00:00");
-        getContentPane().add(lblClockShadow, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 290, -1));
+        getContentPane().add(lblClockShadow, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 10, 350, -1));
         getContentPane().add(txtTimeZoneInput, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 180, 170, -1));
 
         btnChangeTimeZone.setText("<html>Change <br>TimeZone");
@@ -639,6 +655,10 @@ static int xx,yy;
         // TODO add your handling code here:
         this.timezoneuserinput = txtTimeZoneInput.getText();
         this.lblcurrenttimezone.setText(txtTimeZoneInput.getText());
+        Font Nigga = lblcurrenttimezone.getFont();
+        Nigga.deriveFont(Font.PLAIN);
+        this.lblcurrenttimezone.setForeground(Color.black);
+        this.lblcurrenttimezone.repaint();
     }//GEN-LAST:event_btnChangeTimeZoneActionPerformed
 
     private void lblstoprainbowActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lblstoprainbowActionPerformed

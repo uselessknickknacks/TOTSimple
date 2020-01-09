@@ -5,8 +5,14 @@
  */
 package timeontop5;
 
+
+import java.time.DateTimeException;
 import java.time.ZoneId;
 import java.util.TimerTask;
+import java.lang.reflect.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.util.Pair;
 
 /**
  *
@@ -15,16 +21,38 @@ import java.util.TimerTask;
 public class timer {
 
    
-    public String grabtime() {
+    public String[] grabtime() {
         
         String timevar = null;
+        String errorlabel = null;
+        Boolean isErrorTriggered = false;
+        
        String timezonetext = Main.timezoneuserinput;
-       ZoneId zone = ZoneId.of( "Europe/Stockholm" ); //Default setting
+       
+       ZoneId zone; 
+        zone = ZoneId.of( "Europe/Stockholm" ); //Default setting
+       
+       
+       
        if ("".equals(timezonetext) || timezonetext == null) {
            
        } else {
            
-           zone = ZoneId.of( timezonetext );
+           try {
+               zone = ZoneId.of( timezonetext );
+           } catch (DateTimeException ex) {
+              
+               System.out.println(ex);
+               System.out.println("------------------------------------------------");
+               System.out.println("REEEEEEEE! ENTER THE RIGHT TIMEZONE NEXT TIME!!!");
+               System.out.println("------------------------------------------------");
+               zone = ZoneId.of( "Europe/Stockholm" ); //Reset timer to default timezone.
+               Main.timezoneuserinput = "";
+               isErrorTriggered = true;
+               
+               
+           }
+           
            
            
            
@@ -228,8 +256,15 @@ public class timer {
        
        
   
-       
-        return timevar;
+       if (isErrorTriggered == true) {
+           String[] stringArray = new String[]{timevar,"ERROR: Wrong TimeZone, Try again!"};
+           isErrorTriggered = false;
+           return stringArray;
+       } else {
+           String[] stringArray = new String[]{timevar};
+           return stringArray;
+       }
+        
     }
    
    
